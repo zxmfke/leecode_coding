@@ -1,0 +1,125 @@
+572. Subtree of Another
+
+description:
+Given two non-empty binary trees s and t, check whether tree t has exactly the same structure and node values with a subtree of s.
+A subtree of s is a tree consists of a node in s and all of this node's descendants. 
+The tree s could also be considered as a subtree of itself.
+
+
+Input
+Example 1:
+Given tree s:
+     3
+    / \
+   4   5
+  / \
+ 1   2
+ 
+ Given tree t:
+   4 
+  / \
+ 1   2
+ 
+ Example 2:
+ Given tree s:
+     3
+    / \
+   4   5
+  / \
+ 1   2
+    /
+   0
+ 
+ Given tree t:
+   4
+  / \
+ 1   2
+ 
+ Ouput:
+ Example 1:
+ Return true, because t has the same structure and node values with a subtree of s.
+ 
+ Example 2:
+ Return false.
+ 
+ My code:
+ -------------------------------------
+ /**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+bool isSameNode(struct TreeNode* s, struct TreeNode* t)
+{
+    if(s == NULL && t == NULL) return true;
+    else if(s == NULL) return false;
+    else if(t == NULL) return false;
+    
+    return (s->val == t->val) && isSameNode(s->left,t->left) && isSameNode(s->right,t->right);
+}
+
+bool isSubtree(struct TreeNode* s, struct TreeNode* t)
+{
+    if(s == NULL)return false;
+    
+    return isSameNode(s,t) || isSubtree(s->left,t) || isSubtree(s->right,t);
+}
+-------------------------------------
+
+
+
+Code better than me:
+-------------------------------------
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+
+bool cmpNode(struct TreeNode* s, struct TreeNode* t)
+{
+     if(s == NULL && t == NULL)
+        return true;
+    if(s == NULL && t != NULL)
+        return false;
+    if(s != NULL && t == NULL)
+        return false;
+    return s->val == t->val;
+}
+bool isSubtree(struct TreeNode* s, struct TreeNode* t) {
+    bool res = false;
+    if(s == NULL && t == NULL)
+        return true;
+    if(s == NULL && t != NULL)
+        return false;
+    if(s != NULL && t == NULL)
+        return false;
+    
+    if(s->val == t->val && cmpNode(s->left, t->left) && cmpNode(s->right, t->right)) {
+        res =  isSubtree(s->left, t->left) && isSubtree(s->right, t->right);
+    }
+    if(res)
+        return true;
+    return isSubtree(s->left, t) || isSubtree(s->right, t);
+}
+-------------------------------------
+
+Compare:
+
+
+
+knowledge:
+
+
+
+self-examination:
+    I felt upsed when I was solving this question, I didn't have any ideas in my mind. This quesiton remained me that I am short of 
+the view of recursive and the algorithm of dealing a tree. I found out that I was poor at these, I need to work harder. Whatever is the 
+view of recursive or the algorithm of dealing a tree. The algorithm of dealing a tree is cardinal to a programmer. You have to pay attention
+to it.
