@@ -1,0 +1,53 @@
+191. Number of 1 Bits
+
+description:
+Write a function that takes an unsigned integer and returns the number of ’1' bits it has (also known as the Hamming weight).
+For example, the 32-bit integer ’11' has binary representation 00000000000000000000000000001011, so the function should return 3.
+
+Input:
+10
+
+Output:
+2
+
+My code:
+--------------------------------
+int hammingWeight(uint32_t n) {
+    int bit = 32;
+    int result = 0;
+    while(bit--)
+    {
+        if(((n%2)&1))result++;
+        n/=2;
+    }
+    return result;
+}
+--------------------------------
+
+
+Code better than me:
+--------------------------------
+int hammingWeight(uint32_t n)
+{
+    int wgt = 0;
+    while(n)
+    {
+        wgt += n&1;
+        n>>=1;
+    }
+    return wgt;
+}
+--------------------------------
+
+Compare:
+'>>' get used to the binary view, the number stores in computer is binary, so it easy to use this operator to compute.
+
+
+knowledge:
+uint32_t 
+
+
+self-examination:
+You are short of the view of binary.
+
+
