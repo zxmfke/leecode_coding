@@ -1,0 +1,84 @@
+7. Reverse Integer
+
+description:
+Reverse digits of an integer.
+The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.
+
+Input:
+Example 1: 
+x = 123
+
+Example 2: 
+x = -123
+
+
+Output:
+Example 1:
+321
+
+Example 2:
+-321
+
+My code(not by myself):
+-------------------------
+int reverse(int x) {
+    long long val = 0;
+	do 
+	{
+		val = val * 10 + x % 10;
+		x /= 10;
+	} while (x);
+	
+	return (val > INT_MAX || val < INT_MIN) ? 0 : val;
+}
+-------------------------
+
+
+Code bettern than me:
+-------------------------
+int reverse(int x) {
+    
+    unsigned int ux, res = 0, tmp, res1;
+    
+    if(x < 0)
+        ux = 0 - x;
+    else
+        ux = x;
+    
+    while(ux)
+    { 
+        tmp = ux - (ux/10)*10;
+        if(res > (0x80000000/10))
+            return 0;
+        res = res*10;
+        if(res >= (0x80000000 - tmp))
+            return 0;
+        res += tmp;
+        ux = ux/10;
+    }
+    
+    if(x < 0)
+        return 0 - (int)res;
+    return res;
+    
+}
+-------------------------
+
+compare:
+1. The way to represent val_max;
+2. The method to compute result is it overflow;
+3. The way to get single digits;
+4. The view of dealing an input;
+
+knowledge:
+The performance using (ux-(ux/10)*10) is better than ux%10;
+
+
+self-examination:
+
+
+
+
+
+
+
