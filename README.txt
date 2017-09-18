@@ -1,1 +1,1 @@
-leetcode improving C programming skill
+leetcode improving C programming ability
