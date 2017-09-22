@@ -1,0 +1,108 @@
+<h1>520. Detect Capital</h1>
+
+<h4>Description:</h4>
+Given a word, you need to judge whether the usage of capitals in it is right or not.
+We define the usage of capitals in a word to be right when one of the following cases holds:
+
+All letters in this word are capitals, like "USA".
+All letters in this word are not capitals, like "leetcode".
+Only the first letter in this word is capital if it has more than one letter, like "Google".
+Otherwise, we define that this word doesn't use capitals in a right way.
+
+```
+Input: 
+Example 1:
+"USA"
+
+Example 2:
+"FlaG"
+
+Output: 
+Example 1:
+True
+
+Example 2:
+False
+```   
+
+
+<h4>My Code:</h4>
+
+```c
+bool detectCapitalUse(char* word) {
+    
+    char* compute = word;
+    int i,wordLength=0;
+    for (; *compute != '\0'; compute++) {
+        wordLength++;
+    }
+    
+    if(word[0]>90)
+    {
+        for(i=0;i<wordLength;i++)
+        {
+            if(word[i]>=65 && word[i]<=90)return false;
+        }  
+    }
+    else 
+    {
+        for(i=0;i<wordLength;i++)
+        {
+            if(wordLength>2 && word[1]>90)
+            {
+                if(i>1 && word[i]>=65 && word[i]<=90)return false;
+            }
+            else 
+            {
+                if(word[i]>90 && wordLength>2)return false;
+            }
+        }
+    }
+    
+    return true;
+}
+```
+
+
+<h4>Code better than me:</h4>
+
+```c
+bool detectCapitalUse(char* word) {
+    
+    if (word == NULL) return false;
+    bool upper = false, lower = false;
+    int l = strlen(word)-1;
+    if (l == 0) return true;
+    //char* pointer = word;
+    char c = word[l];
+    if ('A' <= c && c <= 'Z') upper = true; 
+    if ('a' <= c && c <= 'z') lower = true; 
+    l--;
+    while (l != 0) {
+        c = word[l];
+        printf("%c", c);
+        if (upper && ( c >= 'a'  && c <= 'z'))
+            return false;
+        if (lower && ('A' <= c && c <= 'Z'))
+            return false;
+        l--;
+    }
+    c = word[l];
+    
+    if (upper)
+        return 'A' <= c && c <= 'Z';
+
+    return true;
+}
+```
+
+
+<h4>Compare:</h4>
+
+
+<h4>Knowledge:</h4>
+
+
+<h4>Self-examination:</h4>
+
+
