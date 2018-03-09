@@ -1,6 +1,6 @@
-<h1>237.Delete Node in a Linked List</h1>
+# 237.Delete Node in a Linked List
 
-<h4>Description:</h4>
+### Description:
 
 Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.
 
@@ -14,7 +14,7 @@ output:
 1 -> 2 -> 4
 ```
 
-<h4>My Code:</h4>
+### My Code:</h4>
 
 ```c
 /**
@@ -30,10 +30,10 @@ void deleteNode(struct ListNode* node) {
 }
 ```
 
-<h4>Code better than me:</h4>
+### Code better than me:</h4>
 
-<h4>Compare:</h4>
+### Compare:</h4>
 
-<h4>Knowledge:</h4>
+### Knowledge:</h4>
 
-<h4>Self-examination:</h4>
+### Self-examination:</h4>
