@@ -1,0 +1,79 @@
+<h1>83. Remove Duplicates from Sorted List</h1>
+
+<h4>Description:</h4>
+Given a sorted linked list, delete all duplicates such that each element appear only once.
+
+```
+input:
+1 -> 1 -> 2
+
+output:
+1 -> 2
+```
+
+<h4>My Code:</h4>
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* deleteDuplicates(struct ListNode* head) {
+    if(head==NULL || head->next==NULL)
+        return head;
+    
+    struct ListNode* current = head;
+    struct ListNode* preceding = head->next;
+    
+    while(current!=NULL){
+        while(preceding!=NULL)
+        {
+            if(current->val==preceding->val)
+                preceding=preceding->next;
+            else break;
+        }
+        current->next = preceding;
+        current = preceding;
+    }
+    
+    return head;
+}
+```
+
+<h4>Code better than me:</h4>
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* deleteDuplicates(struct ListNode* head) {
+    if(head == NULL || head->next == NULL) return head;
+    struct ListNode* slow = head;
+    struct ListNode* fast = slow -> next;
+    while(fast!=NULL){
+        while(slow->val == fast->val){
+            slow->next = fast->next;
+            free(fast);
+            if(slow->next == NULL) return head;
+            fast = slow->next;
+        }
+        slow = slow->next;
+        fast = slow->next;
+    }
+    return head;
+}
+```
+
+
+<h4>Compare:</h4>
+
+
+<h4>Knowledge:</h4>
+
+
+<h4>Self-examination:</h4>
