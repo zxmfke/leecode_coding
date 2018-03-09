@@ -1,0 +1,33 @@
+<h1>237.Delete Node in a Linked List</h1>
+
+<h4>Description:</h4>
+
+```
+Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.
+
+Supposed the linked list is 1 -> 2 -> 3 -> 4 and you are given the third node with value 3, the linked list should become 1 -> 2 -> 4 after calling your function.
+```
+
+<h4>My Code:</h4>
+
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+void deleteNode(struct ListNode* node) {
+    node->val = node->next->val;
+    node->next = node->next->next;
+}
+```
+
+<h4>Code better than me:</h4>
+
+<h4>Compare:</h4>
+
+<h4>Knowledge:</h4>
+
+<h4>Self-examination:</h4>
