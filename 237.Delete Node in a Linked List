@@ -1,11 +1,17 @@
-#<h1>237.Delete Node in a Linked List</h1>
+<h1>237.Delete Node in a Linked List</h1>
 
 <h4>Description:</h4>
 
-```
 Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.
 
 Supposed the linked list is 1 -> 2 -> 3 -> 4 and you are given the third node with value 3, the linked list should become 1 -> 2 -> 4 after calling your function.
+
+```
+input:
+1 -> 2 -> 3 -> 4   3
+
+output:
+1 -> 2 -> 4
 ```
 
 <h4>My Code:</h4>
