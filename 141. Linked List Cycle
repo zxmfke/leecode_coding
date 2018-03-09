@@ -1,0 +1,44 @@
+<h1>141. Linked List Cycle</h1>
+
+<h4>Description:</h4>
+Given a linked list, determine if it has a cycle in it.
+
+<h4>My Code:</h4>
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+bool hasCycle(struct ListNode *head) {
+   
+    if(head==NULL || head->next==NULL)
+        return false;
+    
+    struct ListNode *current = head;
+    struct ListNode *preceding = head->next;
+    while(current!=preceding){
+        
+        if(preceding==NULL || preceding->next==NULL)
+            return false;
+        
+        current = current->next;
+        preceding=preceding->next->next;
+    }
+    
+    return true;
+}
+```
+
+<h4>Code better than me:</h4>
+same
+
+<h4>Compare:</h4>
+
+
+<h4>Knowledge:</h4>
+
+
+<h4>Self-examination:</h4>
