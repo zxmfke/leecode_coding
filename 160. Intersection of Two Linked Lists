@@ -1,0 +1,81 @@
+<h1>160. Intersection of Two Linked Lists</h1>
+
+<h4>Description:</h4>
+Write a program to find the node at which the intersection of two singly linked lists begins.
+
+```
+A:          a1 → a2
+                   ↘
+                     c1 → c2 → c3
+                   ↗            
+B:     b1 → b2 → b3
+```
+
+<h4>My Code:</h4>
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB) {
+    
+    if(headA == NULL || headB == NULL)return NULL;
+    
+    struct ListNode *l1 = headA;
+    struct ListNode *l2 = headB;
+    
+    struct ListNode *tmpA = headA;
+    struct ListNode *tmpB = headB;
+    
+    int lA=1,lB=1,distance=0;
+    
+    while(l1->next!=NULL){
+        lA++;
+        l1=l1->next;
+    }
+    
+    while(l2->next!=NULL){
+        lB++;
+        l2=l2->next;
+    }
+    
+    if(l1==l2){
+        if(lB>lA){
+            tmpA = headB;
+            tmpB = headA;
+            
+        }
+        
+        int distance = lB>lA?lB-lA:lA-lB;
+        
+        while(distance--){
+            tmpA=tmpA->next;
+        }
+        
+        while(tmpA!=tmpB){
+            tmpA = tmpA->next;
+            tmpB = tmpB->next;
+        }
+        
+        return tmpA;
+    }
+    else return NULL;
+    
+    return NULL;
+}
+```
+
+<h4>Code better than me:</h4>
+No
+
+
+<h4>Compare:</h4>
+
+
+<h4>Knowledge:</h4>
+
+
+<h4>Self-examination:</h4>
