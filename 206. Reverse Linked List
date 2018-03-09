@@ -1,0 +1,50 @@
+<h1>206. Reverse Linked List</h1>
+
+<h4>Description:</h4>
+Reverse a singly linked list.
+
+```
+input:
+1 -> 2 -> 3
+
+output:
+3 -> 2 -> 1
+```
+
+<h4>My Code:</h4>
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* reverseList(struct ListNode* head) {
+    
+    if(head==NULL)return NULL;
+    if(head->next==NULL)return head;
+    
+    struct ListNode* pre = NULL;
+    struct ListNode* next= NULL;
+    
+    while(head!=NULL){
+        next = head->next;
+        head->next = pre;
+        pre = head;
+        head = next;
+    }
+    return pre;
+}
+```
+
+<h4>Code better than me:</h4>
+same
+
+<h4>Compare:</h4>
+
+
+<h4>Knowledge:</h4>
+
+
+<h4>Self-examination:</h4>
