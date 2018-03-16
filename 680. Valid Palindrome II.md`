@@ -1,0 +1,124 @@
+<h1>680. Valid Palindrome II</h1>
+
+<h4>Description:</h4>
+Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
+
+```
+input:
+abca
+
+output:
+true
+```
+
+<h4>My Code:</h4>
+bool isPalindrome(char *s, int head, int tail)
+{
+    while (head < tail)
+    {
+        if (*(s + head) != *(s + tail))
+            return false;
+        head++;
+        tail--;
+    }
+    return true;
+}
+
+bool validPalindrome(char* s) {
+    int head = 0;
+    int tail = strlen(s) - 1;
+
+    while(head < tail){
+        if(*(s + head) == *(s + tail)){
+            head++;
+            tail--;
+        }
+        else
+        {
+            if(isPalindrome(s, head + 1, tail))
+                return true;
+            if(isPalindrome(s, head, tail - 1))
+                return true;
+        
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+<h4>Code better than me:</h4>
+
+```c
+bool validPalindrome(char* s)
+{
+	int sIndex=-1;
+	while(s[++sIndex]!=0);
+	
+	if(sIndex<3)
+		return 1;
+	
+	int ErrorLabel;
+	int StartIndex=0,EndIndex=sIndex-1;
+	int TempStartIndex,TempEndIndex;
+	while(StartIndex<EndIndex)
+	{
+		if(s[StartIndex]!=s[EndIndex])
+		{
+			TempStartIndex=StartIndex,TempEndIndex=EndIndex;
+			ErrorLabel=1;
+			if(s[++TempStartIndex]==s[TempEndIndex])
+			{
+				while(TempStartIndex<TempEndIndex)
+				{
+					if(s[TempStartIndex]!=s[TempEndIndex])
+					{
+						ErrorLabel=0;
+						break;
+					}
+					TempStartIndex++,TempEndIndex--;
+				}
+				
+				if(ErrorLabel==1)
+					return 1;
+			}
+			
+			TempStartIndex=StartIndex,TempEndIndex=EndIndex;
+			ErrorLabel=1;
+			if(s[TempStartIndex]==s[--TempEndIndex])
+			{
+				while(TempStartIndex<TempEndIndex)
+				{
+					if(s[TempStartIndex]!=s[TempEndIndex])
+					{
+						ErrorLabel=0;
+						break;
+					}
+					TempStartIndex++,TempEndIndex--;
+				}
+				
+				if(ErrorLabel==1)
+					return 1;
+				else
+					return 0;
+			}
+			else
+				return 0;
+		}
+		else
+			StartIndex++,EndIndex--;
+	}
+	
+	return 1;
+}
+```
+
+<h4>Compare:</h4>
+
+
+
+<h4>Knowledge:</h4>
+
+
+
+<h4>Self-examination:</h4>
